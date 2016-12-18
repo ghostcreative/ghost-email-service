@@ -1,0 +1,12 @@
+{
+  "email": {
+    "processor": "sendgrid",
+    "sendgrid": {
+      "secretKey": "[sendgrid secret key]",
+      "templates": {
+        "templateName": "[templateId]"
+      },
+      "sandboxMode": true
+    }
+  }
+}
