@@ -16,7 +16,7 @@
     "mailchimp",
     "nodejs"
   ],
-  "author": "Nick Gerner",
+  "author": "Jon Tate",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ghostcreative/ghost-email-service/issues"
