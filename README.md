@@ -29,14 +29,14 @@ Provide sendgrid secret key + template names and the associated ID's
 
 ```json
 {
-    fromEmail: 'noreply@domain.com',
-    fromName: 'The Ghost Team',
-    toEmail: 'noreply@domain.com',
-    toName: 'Test User',
-    subject: 'Test Email',
-    substitutions: {
-      url: 'http://test.com',
-      name: 'Test User'
+    "fromEmail": "noreply@domain.com",
+    "fromName": "The Ghost Team",
+    "toEmail": "noreply@domain.com",
+    "toName": "Test User",
+    "subject": "Test Email",
+    "substitutions": {
+      "url": "http://test.com",
+      "name": "Test User"
     }
 }
 ```
