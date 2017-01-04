@@ -1,4 +1,5 @@
 config/test.json
+config/test-mailchimp.json
 .idea/
 node_modules/
 npm-debug.log

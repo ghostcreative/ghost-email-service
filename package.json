@@ -25,7 +25,8 @@
   "dependencies": {
     "bluebird": "^3.4.6",
     "sendgrid": "^4.0.0",
-    "sendgrid-rest": "^2.2.2"
+    "sendgrid-rest": "^2.2.2",
+    "mandrill-api": "^1.0.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
