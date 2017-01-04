@@ -7,9 +7,9 @@
 ## Overview
 
 ### Config (default listed below)
-MailChimp is not currently supported
 Provide sendgrid secret key + template names and the associated ID's
 
+##### Sendgrid Config
 ```json
 {
   "email": {
@@ -22,6 +22,18 @@ Provide sendgrid secret key + template names and the associated ID's
       "sandboxMode": true
     }
   }
+}
+```
+##### MailChimp Config
+```json
+{
+  "email": {
+    "processor": "mailchimp",
+    "mailchimp": {
+      "secretKey": "[sendgrid secret key]",
+      "mandrill": "[mandrill api key]"
+      }
+    }
 }
 ```
 
@@ -40,12 +52,36 @@ Provide sendgrid secret key + template names and the associated ID's
     }
 }
 ```
+### MailChimp Send obj config(default listed below)
+
+```json
+{
+    "fromEmail": "noreply@domain.com",
+    "fromName": "The Ghost Team",
+    "toEmail": "noreply@domain.com",
+    "toName": "Test User",
+    "replyTo": "noreply@domain.com",
+    "subject": "Test Email",
+    "globalMergeVars": {
+      "url": "http://test.com",
+      "name": "Test User"
+    }
+}
+```
 
 ### Models
+##### Sendgrid
 The module will attempt to load the mail send services provided in the config object
 assuming a valid secret key and template id's, along with the sandbox setting.
 All templates will be available via the `send(templateName, obj)`
-method. See examples below.
+method. 
+##### MailChimp
+The module will attempt to load the mail send services provided in the config object
+assuming a valid secret key and mandrill key.
+All templates will be available via the `send(templateName, obj)`
+method. 
+
+See examples below.
 
 Follow the steps below to get the module up and running.
  
@@ -63,12 +99,14 @@ const EmailService = new GhostEmail(config)
 ```
 
 ### 3. Send Email
+##### Sendgrid
+The template name should correspond to a template id within the config object
+##### MailChimp
+The template name should correspond to a template found within your mailchimp templates
 
 ```js
 EmailService.send('templateName',obj)
 .then(result => { ... })
 .catch(err => { ... });
-// The templateName should reference a template name associated to a valid
-// templateId within the initial config object.
 // See obj above
 ```

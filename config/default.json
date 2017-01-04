@@ -1,12 +1,23 @@
 {
-  "email": {
-    "processor": "sendgrid",
-    "sendgrid": {
-      "secretKey": "[sendgrid secret key]",
-      "templates": {
-        "templateName": "[templateId]"
-      },
-      "sandboxMode": true
+  "sengrid": {
+    "email": {
+      "processor": "sendgrid",
+      "sendgrid": {
+        "secretKey": "[sendgrid secret key]",
+        "templates": {
+          "templateName": "[templateId]"
+        },
+        "sandboxMode": true
+      }
+    }
+  },
+  "mailchimp": {
+    "email": {
+      "processor": "mailchimp",
+      "mailchimp": {
+        "secretKey": "[mailchimp secret key]",
+        "mandrill": "[mandrill api key]"
+      }
     }
   }
 }

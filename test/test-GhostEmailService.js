@@ -7,14 +7,14 @@ const GhostEmailService = require('../index');
 describe('GhostEmailService', function () {
   this.timeout(0);
 
-  before(() => {
-    return emailService = new GhostEmailService({
-      processor: 'sendgrid',
-      sendgrid: Config.get('email.sendgrid')
-    })
-  });
+  describe('sendgrid', () => {
 
-  describe('send', () => {
+    before(() => {
+      return emailService = new GhostEmailService({
+        processor: 'sendgrid',
+        sendgrid: Config.get('sendgrid.email.sendgrid')
+      })
+    });
 
     it('should send a welcome email', (done) => {
       emailService.send('welcome', {
@@ -51,4 +51,49 @@ describe('GhostEmailService', function () {
     });
   });
 
+  describe('mailchimp', () => {
+
+    before(() => {
+      return emailServiceMailChimp = new GhostEmailService({
+        processor: 'mailchimp',
+        mailchimp: Config.get('mailchimp.email.mailchimp')
+      })
+    });
+
+    it('should send a welcome email', (done) => {
+      emailServiceMailChimp.send('welcome', {
+        fromEmail: 'noreply@domain.com',
+        fromName: 'The Ghost Team',
+        toEmail: 'noreply@domain.com',
+        toName: 'Test User',
+        replyTo: 'noreply@domain.com',
+        subject: 'Test Email',
+        globalMergeVars: {
+          url: 'http://test.com',
+          name: 'Test User'
+        }
+      })
+      .then(res => {
+        expect(res[0].status).to.equal("sent");
+        done();
+      })
+      .catch(err => done(err));
+    });
+
+    it('should send a welcome email without substitutions', (done) => {
+      emailServiceMailChimp.send('welcome_user', {
+        fromEmail: 'noreply@domain.com',
+        fromName: 'The Ghost Team',
+        toEmail: 'noreply@domain.com',
+        toName: 'Test User',
+        replyTo: 'noreply@domain.com',
+        subject: 'Test Email No Vars'
+      })
+      .then(res => {
+        expect(res[0].status).to.equal("sent");
+        done();
+      })
+      .catch(err => done(err));
+    });
+  });
 });
