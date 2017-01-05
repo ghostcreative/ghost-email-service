@@ -19,7 +19,12 @@ Provide sendgrid secret key + template names and the associated ID's
       "templates": {
         "templateName": "[templateId]"
       },
-      "sandboxMode": true
+      "sandboxMode": true,
+      "defaults": {
+        "fromEmail": "noreply@yourwebsite.com",
+        "fromName": "Pablo Escobar",
+        "replyTo": "contact@yourwebsite.com"
+      }
     }
   }
 }
@@ -30,9 +35,14 @@ Provide sendgrid secret key + template names and the associated ID's
   "email": {
     "processor": "mailchimp",
     "mailchimp": {
-      "secretKey": "[sendgrid secret key]",
+      "secretKey": "[mailchimp api key]",
       "mandrill": "[mandrill api key]"
       }
+    },
+    "defaults": {
+      "fromEmail": "noreply@yourwebsite.com",
+      "fromName": "Justin Tucker",
+      "replyTo": "contact@yourwebsite.com"
     }
 }
 ```
