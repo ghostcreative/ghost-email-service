@@ -22,8 +22,8 @@
   },
   "ses": {
     "endpoint": "",
-    "accessKeyId": "AKIAJQRUE7FHIJJRPHAQ",
-    "secretAccessKey": "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",
-    "region": "us-east-1"
+    "accessKeyId": "",
+    "secretAccessKey": "",
+    "region": ""
   }
 }
