@@ -1,6 +1,9 @@
 const Chai = require('chai');
 const expect = Chai.expect;
 const Config = require('config');
+const ejs = require('ejs');
+const path = require('path');
+const _ = require('lodash');
 
 const GhostEmailService = require('../index');
 
@@ -95,5 +98,46 @@ describe('GhostEmailService', function () {
       })
       .catch(err => done(err));
     });
+  });
+
+  describe('ses', () => {
+
+    before(() => {
+      return emailServiceSes = new GhostEmailService({
+        processor: 'ses',
+        ses: Config.get('ses')
+      })
+    });
+
+    it('should send an email from a template', (done) => {
+
+      const params = {
+        ToAddresses: ['phil@ghostcreative.io'],
+        CcAddresses: ['phil.wertheimer@gmail.com'],
+        subject: 'Test Email for ghost-email-service',
+        source: 'team@ghostcreative.io'
+      };
+
+      const templatePath = path.resolve(__dirname, './templates/test.ejs');
+
+      ejs.renderFile(templatePath, {}, {}, (err, html) => {
+        if (err) {
+          console.log('err', err);
+        } else {
+          console.log('sending', html);
+          emailServiceSes.sendTemplate(_.assignIn(params, { body: html }))
+          .then(res => {
+            console.log('res?', res);
+            done();
+          })
+          .catch(err => {
+            // console.log('err', err);
+            done(err)
+          });
+        }
+      });
+
+    });
+
   });
 });
