@@ -122,16 +122,14 @@ describe('GhostEmailService', function () {
 
       ejs.renderFile(templatePath, {}, {}, (err, html) => {
         if (err) {
-          console.log('err', err);
+          done(err);
         } else {
-          console.log('sending', html);
           emailServiceSes.sendTemplate(_.assignIn(params, { body: html }))
           .then(res => {
-            console.log('res?', res);
+            expect(res.MessageId).to.exist;
             done();
           })
           .catch(err => {
-            // console.log('err', err);
             done(err)
           });
         }
