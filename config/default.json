@@ -19,5 +19,11 @@
         "mandrill": "[mandrill api key]"
       }
     }
+  },
+  "ses": {
+    "endpoint": "",
+    "accessKeyId": "",
+    "secretAccessKey": "",
+    "region": ""
   }
 }

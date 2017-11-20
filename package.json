@@ -1,6 +1,6 @@
 {
   "name": "ghost-email-service",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "nodejs client to interact with the sendgrid and mailchimp apis",
   "main": "index.js",
   "scripts": {
@@ -16,17 +16,20 @@
     "mailchimp",
     "nodejs"
   ],
-  "author": "Jon Tate",
+  "author": "Ghost Creative",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ghostcreative/ghost-email-service/issues"
   },
   "homepage": "https://github.com/ghostcreative/ghost-email-service#readme",
   "dependencies": {
-    "bluebird": "^3.4.6",
+    "aws-sdk": "^2.153.0",
+    "bluebird": "^3.5.1",
+    "ejs": "^2.5.7",
+    "lodash": "^4.17.4",
+    "mandrill-api": "^1.0.0",
     "sendgrid": "^4.0.0",
-    "sendgrid-rest": "^2.2.2",
-    "mandrill-api": "^1.0.0"
+    "sendgrid-rest": "^2.2.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
